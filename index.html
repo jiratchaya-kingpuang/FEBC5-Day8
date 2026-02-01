@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAY7</title>
+    <style>
+        .title {
+            display: none;
+        }
+    </style>
+</head>
+
+
+<body>
+    <!-- <h1 id="titleText" class="">Hello World</h1>
+    <div id="greetings">Hello Praew</div>
+    <button onclick="hideElement()" id="showBtn">Hide element</button> -->
+    <input type="text" name="" id="todo">
+    <div id="result"></div>
+    <button onclick="addElement()">Add Element</button>
+
+
+    <script src="script.js"></script>
+    <script>
+        fetch('https://jsonplaceholder.typicode.com/todos/1')
+            .then(response => response.json())
+            .then(json => {
+                // console.log(json)
+                let result = document.getElementById('result')
+                for (let i = 0 ; i<json.length; i++){
+                    let newElement = document.createElement("p");
+                    newElement.innerHTML = json[i].title;
+                    result.appendChild(newElement)
+                }
+            })
+        function addElement() {
+            // 1นำค่า ใน input ออกมา
+            let inp = document.getElementById("todo").value
+            // 2 เราสร้าง element ใหม่ได้แล้ว
+            let newElement = document.createElement("p")
+            // 3 เราเพิ่มข้อมูลเข้าไปใน element ใหม่ได้แล้ว
+            newElement.innerHTML = inp
+            // 3 เราสามารถเรียก element ที่อยากจะเพิ่มข้่อมูลได้แล้ว
+            let result = document.getElementById('result')
+            // 4 เพิ่มข้อมูลใหม่ลงใน element ปลายทางได้แล้ว
+            result.appendChild(newElement)
+            document.getElementById("todo").value = ''
+
+
+        }
+
+
+        //  1 เราสามารถเรียก element ที่อยากจะเพิ่มข้่อมูลได้แล้ว
+        // document.getElementById('todo')
+        // 2เราต้องการค่าที่อยู่ใน INput ด้วย
+        // document.getElementById('todo').value
+        //  // 3 เราสร้าง element ใหม่ได้แล้ว
+        // let newTodo = document.createElement("input")
+
+    </script>
+</body>
+
+</html>
